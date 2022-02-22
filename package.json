@@ -1,0 +1,25 @@
+{
+  "name": "ali-automation-tool",
+  "version": "1.0.0",
+  "description": "Automated test example of aliexpress.com website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Thiago Gonzaga",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "process": "^0.11.10"
+  },
+  "devDependencies": {
+  }
+}
