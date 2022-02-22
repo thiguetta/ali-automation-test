@@ -10,3 +10,26 @@ details.
 - REST API
 - Validation tests
 - Container ready app
+
+# Prerequisites
+
+- nodejs 17.x
+- Docker
+- Google Chrome
+- chromedriver (http://chromedriver.storage.googleapis.com). It should match your Google Chrome version.
+
+## installing the dependencies
+
+In the project directory, you can run:
+
+`npm install`
+
+It will install the required node dependencies.
+
+## Running the project
+
+In the project directory, you can run:
+
+`npm start`
+
+It runs the app in the development mode. Open http://localhost:8080 to view it in your browser.
