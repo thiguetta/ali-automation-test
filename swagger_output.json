@@ -1,0 +1,129 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "ali-automation-test",
+    "description": "Automated test example of aliexpress.com website"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Endpoints"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Paginated search for products",
+        "parameters": [
+          {
+            "name": "term",
+            "in": "query",
+            "description": "search term",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "search page",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "totalPages": {
+                  "type": "number",
+                  "example": 10
+                },
+                "selectedPage": {
+                  "type": "number",
+                  "example": 1
+                },
+                "products": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "1"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "some product"
+                      },
+                      "url": {
+                        "type": "string",
+                        "example": "product_url.html"
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Products found."
+          }
+        }
+      }
+    },
+    "/product/{id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Get Product by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "product ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product found.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "productName": {
+                  "type": "string",
+                  "example": "some product"
+                },
+                "productPrice": {
+                  "type": "string",
+                  "example": "US$ 1.00"
+                },
+                "productInStock": {
+                  "type": "number",
+                  "example": 200
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

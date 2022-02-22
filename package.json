@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "swagger-autogen": "node swagger.js",
     "test": "mocha --timeout 100000 --exit",
     "build": "docker build -t ali-automation-tool ."
   },
@@ -21,7 +22,9 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "process": "^0.11.10",
-    "selenium-webdriver": "^4.1.1"
+    "selenium-webdriver": "^4.1.1",
+    "swagger-autogen": "^2.19.0",
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
     "chai": "^4.3.6",

@@ -41,3 +41,23 @@ In the project directory, you can run:
 `npm test`
 
 It launches the test runner in the interactive watch mode.
+
+## Building for production
+
+In the project directory, you can run:
+
+`npm run build`
+
+It builds the docker image ready for production containing Google Chrome, chromedriver and nodejs as well.
+
+After building the image, you can run:
+
+`docker run -d --rm -p 8080:8080 ali-automation-tool start`
+
+## Generating Swagger API Doc
+
+In the project directory, you can run:
+
+`npm run swagger-autogen`
+
+After that, run the project and heck http://localhost:8080/doc for Swagger API documentation

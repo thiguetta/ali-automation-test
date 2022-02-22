@@ -5,6 +5,36 @@ const {By} = require('selenium-webdriver');
 const options = new chrome.Options().headless().addArguments("--no-sandbox", "--disable-dev-shm-usage")
 
 exports.getProducts = (req, res, next) => {
+    /**
+     #swagger.start
+     #swagger.path = '/products'
+     #swagger.method = 'get'
+     #swagger.tags = ['Products']
+     #swagger.description = 'Paginated search for products'
+     #swagger.parameters['term'] = {
+        in: 'query',
+        description: 'search term',
+        type: 'string'
+     }
+     #swagger.parameters['page'] = {
+       in: 'query',
+       description: 'search page',
+       type: 'string'
+     }
+     #swagger.responses[200] = {
+       schema: {
+         totalPages: 10,
+         selectedPage: 1,
+         products: [{
+           id: "1",
+           name: "some product",
+           url: "product_url.html"
+         }]
+       },
+       description: 'Products found.'
+     }
+     #swagger.end
+     */
     (async function () {
         try {
             let driver = new webdriver.Builder()
@@ -55,6 +85,26 @@ exports.getProducts = (req, res, next) => {
 };
 
 exports.getProductById = (req, res, next) => {
+    /**
+     #swagger.start
+     #swagger.path = '/product/{id}'
+     #swagger.method = 'get'
+     #swagger.tags = ['Products']
+     #swagger.description = 'Get Product by ID'
+     #swagger.parameters['id'] = {
+        description: 'product ID',
+        type: 'string'
+     }
+     #swagger.responses[200] = {
+       schema: {
+         productName: "some product",
+         productPrice: "US$ 1.00",
+         productInStock: 200
+       },
+       description: 'Product found.'
+     }
+     #swagger.end
+     */
     (async function () {
         try {
             let driver = new webdriver.Builder()
