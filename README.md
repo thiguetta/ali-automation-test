@@ -18,7 +18,7 @@ details.
 - Google Chrome
 - chromedriver (http://chromedriver.storage.googleapis.com). It should match your Google Chrome version.
 
-## installing the dependencies
+## Installing the dependencies
 
 In the project directory, you can run:
 
@@ -33,3 +33,11 @@ In the project directory, you can run:
 `npm start`
 
 It runs the app in the development mode. Open http://localhost:8080 to view it in your browser.
+
+## Running the tests
+
+In the project directory, you can run:
+
+`npm test`
+
+It launches the test runner in the interactive watch mode.
