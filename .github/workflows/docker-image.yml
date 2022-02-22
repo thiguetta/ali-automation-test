@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '17.x'
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: npm run build
+    - name: Run tests
+      run: docker run --rm ali-automation-tool npm test
