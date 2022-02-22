@@ -55,5 +55,25 @@ exports.getProducts = (req, res, next) => {
 };
 
 exports.getProductById = (req, res, next) => {
-    res.status(201).send('Product details should go here');
+    (async function () {
+        try {
+            let driver = new webdriver.Builder()
+                .forBrowser('chrome')
+                .setChromeOptions(options)
+                .build();
+            await driver.get(`https://www.aliexpress.com/item/${req.params.id}.html`);
+            let productName = await driver.findElement(By.css("h1.product-title-text")).getText();
+            let productPrice = await driver.findElement(By.css("span.product-price-value")).getText();
+            let productInStock = await driver.findElement(By.css("div.product-quantity-info")).getText();
+            await driver.quit();
+            res.json({
+                productName: productName,
+                productPrice: productPrice,
+                //available stock is in sentence '\d+ Pieces available', so we grab only the number using regex
+                productInStock: parseInt(productInStock.match(/\d+/)[0])
+            });
+        } catch (e) {
+            console.log(e)
+        }
+    })();
 };

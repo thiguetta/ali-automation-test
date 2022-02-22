@@ -45,7 +45,33 @@ describe('Products', () => {
                 });
         });
         it('it has to get the second ad from the second page of search result for term Iphone', (done) => {
-            done();
+            chai.request(server)
+                .get('/products')
+                .query({term: "Iphone", page: 2})
+                .then((res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('totalPages');
+                    res.body.should.have.property('selectedPage');
+                    res.body.totalPages.should.be.gt(0);
+                    res.body.selectedPage.should.be.eq(2);
+                    res.body.should.have.property('products');
+                    res.body.products.should.be.a('array');
+                    res.body.products.length.should.be.gt(0);
+                    done();
+                }).then(res => {
+                chai.request(server)
+                    .get(`/product/${res.body.products[1].id}`)
+                    .end((err, res) => {
+                        res.should.have.status(200);
+                        res.body.should.be.a('object');
+                        res.body.should.have.property('productName');
+                        res.body.should.have.property('productPrice');
+                        res.body.should.have.property('productInStock');
+                        res.body.productInStock.should.be.gt(0);
+                        done();
+                    });
+            });
         });
     });
 });

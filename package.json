@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha --timeout 100000"
+    "test": "mocha --timeout 100000 --exit"
   },
   "keywords": [],
   "author": "Thiago Gonzaga",
